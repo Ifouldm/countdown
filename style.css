@@ -7,13 +7,17 @@
     --Extremelydarkblue: hsl(234, 17%, 12%);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
 
 body {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     font-family: 'Red Hat Text', sans-serif;
     background-color: var(--Verydarkblue);
@@ -23,14 +27,19 @@ body {
 }
 
 h1 {
+    text-transform: uppercase;
     font-weight: 400;
     color: var(--White);
+    letter-spacing: 0.2rem;
 }
 
 h3 {
+    margin: 1rem 0;
+    font-size: 0.6rem;
     font-weight: 400;
     color: var(--Grayishblue);
     text-transform: uppercase;
+    letter-spacing: 0.2rem;
 }
 
 .clock {
@@ -38,24 +47,25 @@ h3 {
 }
 
 .time {
-    width: 100px;
-    height: 120px;
     margin: 1rem;
     text-align: center;
 }
 
 .ticker {
+    width: 5rem;
+    padding: 1rem 1rem;
     position: relative;
     text-align: center;
     font-size: 4rem;
     font-weight: 700;
     border-radius: 0.5rem;
-    background-color: var(--Darkdesaturatedblue);
+    background-color: black;
     color: var(--Softred);
-    box-shadow: 0 0.5rem 2px -2px black;
+    box-shadow: 0 0.5rem 2px -2px var(--Extremelydarkblue);
+    z-index: 0;
 }
 
-.ticker:after {
+.ticker:before {
     position: absolute;
     content: '';
     top: 0;
@@ -63,11 +73,36 @@ h3 {
     height: 50%;
     width: 100%;
     border-radius: inherit;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--Darkdesaturatedblue);
+    opacity: 0.85;
+    z-index: 1;
+}
 
+.ticker:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    border-radius: inherit;
+    background-color: var(--Darkdesaturatedblue);
+    z-index: -1;
+}
+
+.socials a {
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.socials object {
+    cursor: pointer;
+    fill: var(--Softred);
 }
 
 .attribution {
+    margin: 0.5rem;
+    color: var(--Grayishblue);
     position: fixed;
     bottom: 0;
     font-size: 11px;
