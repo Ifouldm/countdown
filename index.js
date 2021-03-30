@@ -6,13 +6,35 @@ const days = document.getElementById('Days');
 const hours = document.getElementById('Hours');
 const minutes = document.getElementById('Minutes');
 const seconds = document.getElementById('Seconds');
+const duration = moment.duration(targetDate.diff(moment()));
 
-setInterval(() => {
-    const duration = moment.duration(targetDate.diff(moment()));
-    days.textContent = duration.days().toString().padStart(2,'0');
-    hours.textContent = duration.hours().toString().padStart(2,'0');
-    minutes.textContent = duration.minutes().toString().padStart(2,'0');
-    seconds.textContent = duration.seconds().toString().padStart(2,'0');
+days.addEventListener("transitionend", () => days.classList.remove('flip'), true);
+hours.addEventListener("transitionend", () => hours.classList.remove('flip'), true);
+minutes.addEventListener("transitionend", () => minutes.classList.remove('flip'), true);
+seconds.addEventListener("transitionend", () => seconds.classList.remove('flip'), true);
+
+setInterval(() => {  
+    let daysRemaining = duration.days().toString().padStart(2, '0');
+    let hoursRemaining = duration.hours().toString().padStart(2, '0');
+    let minutesRemaining = duration.minutes().toString().padStart(2, '0');
+    let secondsRemaining = duration.seconds().toString().padStart(2, '0');
+    if (days.firstElementChild.textContent != daysRemaining) {
+        days.firstElementChild.textContent = daysRemaining
+        days.classList.add('flip');
+    }
+    if (hours.firstElementChild.textContent != hoursRemaining) {
+        hours.firstElementChild.textContent = hoursRemaining
+        hours.classList.add('flip');
+    }
+    if (minutes.firstElementChild.textContent != minutesRemaining) {
+        minutes.firstElementChild.textContent = minutesRemaining
+        minutes.classList.add('flip');
+    }
+    if (seconds.firstElementChild.textContent != secondsRemaining) {
+        seconds.firstElementChild.textContent = secondsRemaining
+        seconds.classList.add('flip');
+    }
+    duration.subtract(1, 's') 
 }, 1000);
 
 links[0].addEventListener('mouseover', () => {
