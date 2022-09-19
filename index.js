@@ -1,7 +1,7 @@
 const links = document.getElementsByClassName('social-link');
 
 //const targetDate = moment('2021-04-05T00:00:00+00:00');
-const targetDate = moment().endOf('month').format('YYYY-MM-DD hh:mm');
+const targetDate = moment().endOf('month');
 
 const days = document.getElementById('Days');
 const hours = document.getElementById('Hours');
